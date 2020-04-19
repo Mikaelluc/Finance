@@ -14,24 +14,25 @@ while True:
     else:
         break
 
-
 if tax1am == '':
     tax1am = (1 + float(tax1aa)/100)**(1/12) - 1
 else:
     tax1aa = (1 + float(tax1am)/100)**(12/1) - 1
 
 while True:
-    Tcap = str(input("Período de capitalização: ")).lower().split()
+    Tcap = str(input("Período de capitalização(ex: 5 meses ou 2 anos ou 1 ano e 2 meses): ")).lower().replace("mês","mes").replace("meses","mes").replace("anos","ano").split()
     if (Tcap[0] == ''):
         print("Você não informou nenhum período de capitalização, tente novamente.\n")
     else:
         if len(Tcap)==1:
             Tcap.append('a')
         break
-if (Tcap[1]=="meses"):
-    Tap = float(Tcap[0])
-elif (Tcap[1]=="anos"):
+if "mes" and "ano" in Tcap:
+    Tap = float(Tcap[0])*12+float(Tcap[3])
+elif (Tcap[1]=="ano"):
     Tap = 12*float(Tcap[0])
+elif (Tcap[1]=="mes"):
+    Tap = float(Tcap[0])
 else: 
     Tcap[1].replace("a","meses")
     Tap = float(Tcap[0])
@@ -44,13 +45,15 @@ Montante_com_IR = Capital + Lucro_depois_do_IR
 
 if (ir == "sim"):
     Montante_final = Capital + Lucro_depois_do_IR
-    print("Valor final: ", round(Montante_final, 3))
+    print("Valor final: {:.2f}" .format(Montante_final))
 else: 
-    print("Valor final: .2f", round(Montante_sem_IR, 3))
+    print("Valor final: {:.2f}" .format(Montante_sem_IR))
 
-#Insves2 = input()
+#Insves2 = input()def Calcula_rendimento(Var):
+#     if Var == ''
+
 #tax2 = input("Qual a taxa de rentabilidade de {}" .format(Insves2))
 
 
-#def Digito_Enter(Var):
-#    if Var == ''
+# def Calcula_rendimento(Var):
+#     if Var == ''
